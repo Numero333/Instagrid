@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74622F422A4DB6F0008E9963 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F402A4DB6F0008E9963 /* Delm-Medium.otf */; };
+		74622F432A4DB6F0008E9963 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */; };
 		74F8C0752A377E40009FE595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0742A377E40009FE595 /* AppDelegate.swift */; };
 		74F8C0772A377E40009FE595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0762A377E40009FE595 /* SceneDelegate.swift */; };
 		74F8C0792A377E40009FE595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0782A377E40009FE595 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74622F402A4DB6F0008E9963 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../Ressources/Delm-Medium.otf"; sourceTree = "<group>"; };
+		74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../Ressources/ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		74F8C0712A377E40009FE595 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F8C0742A377E40009FE595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74F8C0762A377E40009FE595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				74F8C07D2A377E42009FE595 /* Assets.xcassets */,
 				74F8C07F2A377E42009FE595 /* LaunchScreen.storyboard */,
 				74F8C0822A377E42009FE595 /* Info.plist */,
+				74622F402A4DB6F0008E9963 /* Delm-Medium.otf */,
+				74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
@@ -127,6 +133,8 @@
 			files = (
 				74F8C0812A377E42009FE595 /* LaunchScreen.storyboard in Resources */,
 				74F8C07E2A377E42009FE595 /* Assets.xcassets in Resources */,
+				74622F432A4DB6F0008E9963 /* ThirstySoftRegular.otf in Resources */,
+				74622F422A4DB6F0008E9963 /* Delm-Medium.otf in Resources */,
 				74F8C07C2A377E40009FE595 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +303,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +313,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,6 +332,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +342,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
