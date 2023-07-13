@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum SelectedButton {
+enum ButtonIdentifier {
     
-    case first
-    case second
-    case third
-    case fourth
+    case optionOne
+    case optionTwo
+    case optionThree
+    case optionFour
     
 }

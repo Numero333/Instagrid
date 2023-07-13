@@ -239,7 +239,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                 <connections>
-                                                    <action selector="makeFirstLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="92q-tE-VXm"/>
+                                                    <action selector="displayFirstLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="92q-tE-VXm"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -272,7 +272,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                 <connections>
-                                                    <action selector="makeSecondLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="rzE-jn-oC9"/>
+                                                    <action selector="displaySecondLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="rzE-jn-oC9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -305,7 +305,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                 <connections>
-                                                    <action selector="makeThirdLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="0XA-nz-0lf"/>
+                                                    <action selector="displayThirdLayout" destination="BYZ-38-t0r" eventType="touchUpInside" id="0XA-nz-0lf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -329,6 +329,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.71764705880000002" green="0.84313725490000002" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="UIZ-T7-Tcb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="1xV-aN-pFu"/>
                             <constraint firstItem="iTm-PH-IN4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Vz-Wv-jPA"/>
@@ -348,6 +349,9 @@
                             <constraint firstItem="iTm-PH-IN4" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="wjG-He-r1c"/>
                             <constraint firstItem="UIZ-T7-Tcb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="z7e-7o-BEr"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="x3o-lY-ytY" appends="YES" id="fac-Qd-3pX"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bottomLayout" destination="pvK-HG-FeR" id="2by-dS-L8C"/>
@@ -355,6 +359,8 @@
                         <outlet property="firstPhoto" destination="uWt-WK-52h" id="Fun-PA-NLc"/>
                         <outlet property="firstSelectedIcon" destination="w7m-Nl-Pc3" id="UKr-LL-JMR"/>
                         <outlet property="fourthPhoto" destination="5df-gM-Loh" id="eB3-2h-6NR"/>
+                        <outlet property="gestureRecognizer" destination="x3o-lY-ytY" id="eJm-wg-tO0"/>
+                        <outlet property="photosMontageView" destination="1qF-Dd-zqF" id="NMy-3P-rjQ"/>
                         <outlet property="secondLayout" destination="jh9-oi-2wh" id="U1y-uM-qtN"/>
                         <outlet property="secondPhoto" destination="pTv-DE-L8S" id="vyN-OK-3L4"/>
                         <outlet property="secondSelectedIcon" destination="zDn-0L-Y8E" id="bFZ-08-bHn"/>
@@ -365,6 +371,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="x3o-lY-ytY"/>
             </objects>
             <point key="canvasLocation" x="65.625" y="-60.2112676056338"/>
         </scene>

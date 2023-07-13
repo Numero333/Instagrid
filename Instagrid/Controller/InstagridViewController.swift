@@ -10,80 +10,76 @@ import SwiftUI
 
 final class InstagridViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    // MARK: Button photo
-//    @IBOutlet weak var firstPhotoButton: UIButton!
-//    @IBOutlet weak var secondPhotoButton: UIButton!
-//    @IBOutlet weak var thirdPhotoButton: UIButton!
-//    @IBOutlet weak var fourthPhotoButton: UIButton!
-    
-    // MARK: UIView Photo
+    // MARK: Property
     @IBOutlet weak var firstPhoto: UIImageView!
     @IBOutlet weak var secondPhoto: UIImageView!
     @IBOutlet weak var thirdPhoto: UIImageView!
     @IBOutlet weak var fourthPhoto: UIImageView!
     
-    // MARK: Selected Icon
     @IBOutlet private var firstSelectedIcon: UIImageView!
     @IBOutlet private var secondSelectedIcon: UIImageView!
     @IBOutlet private var thirdSelectedIcon: UIImageView!
     
-    // MARK: UIView Layout
     @IBOutlet private var topLayout: UIView!
     @IBOutlet private var bottomLayout: UIView!
     
-    // MARK: Layout Button
     @IBOutlet private var firstLayout: UIButton!
     @IBOutlet private var secondLayout: UIButton!
     @IBOutlet private var thirdLayout: UIButton!
     
-    var selectedPhoto: UIImage = UIImage()
-    var selectedButton: SelectedButton?
+    @IBOutlet private weak var photosMontageView: UIView!
+    @IBOutlet private var gestureRecognizer: UIPanGestureRecognizer!
+    
+    // MARK: - Override
+    private var selectedPhoto: UIImage?
+    private var selectedButton: ButtonIdentifier?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeFirstLayout()
+        displayFirstLayout()
+        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture))
+        view.addGestureRecognizer(gestureRecognizer)
     }
     
-    
-    @IBAction func firstPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .first
+    // MARK: - Action
+    @IBAction private func firstPhotoButtonTapped(_ sender: UIButton) {
+        selectedButton = .optionOne
         showImagePicker()
-        assigningPhoto(for: firstPhoto)
+        assignPhoto(for: firstPhoto)
     }
     
-    @IBAction func secondPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .second
+    @IBAction private func secondPhotoButtonTapped(_ sender: UIButton) {
+        selectedButton = .optionTwo
         showImagePicker()
-        assigningPhoto(for: secondPhoto)
+        assignPhoto(for: secondPhoto)
     }
     
-    @IBAction func thirdPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .third
+    @IBAction private func thirdPhotoButtonTapped(_ sender: UIButton) {
+        selectedButton = .optionThree
         showImagePicker()
-        assigningPhoto(for: thirdPhoto)
+        assignPhoto(for: thirdPhoto)
     }
     
-    @IBAction func fourthPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .fourth
+    @IBAction private func fourthPhotoButtonTapped(_ sender: UIButton) {
+        selectedButton = .optionFour
         showImagePicker()
-        assigningPhoto(for: fourthPhoto)
+        assignPhoto(for: fourthPhoto)
     }
     
-    @IBAction private func makeFirstLayout() {
-        layout(for: .first)
+    @IBAction private func displayFirstLayout() {
+        updateLayout(for: .first)
     }
     
-    
-    @IBAction private func makeSecondLayout() {
-        layout(for: .second)
+    @IBAction private func displaySecondLayout() {
+        updateLayout(for: .second)
     }
     
-    
-    @IBAction private func makeThirdLayout() {
-        layout(for: .third)
+    @IBAction private func displayThirdLayout() {
+        updateLayout(for: .third)
     }
     
-    private func layout(for layout: Layout) {
+    // MARK: - Private
+    private func updateLayout(for layout: Layout) {
         
         firstSelectedIcon.isHidden = true
         secondSelectedIcon.isHidden = true
@@ -107,10 +103,6 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         }
     }
     
-    private func assigningPhoto(for image: UIImageView) {
-        image.image = selectedPhoto
-    }
-    
     private func showImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
@@ -118,6 +110,21 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         present(imagePicker, animated: true)
     }
     
+    private func assignPhoto(for imageView: UIImageView) {
+        imageView.image = selectedPhoto
+    }
+    
+    @objc private func handleGesture() {
+        
+        let loc = gestureRecognizer.translation(in: self.view)
+        let size = abs(loc.y)
+        
+        if size > 100 {
+            print("reconnu")
+        }
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }
@@ -126,13 +133,13 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         if let image = info[.originalImage] as? UIImage {
             
             switch selectedButton {
-            case .first:
+            case .optionOne:
                 firstPhoto.image = image
-            case .second:
+            case .optionTwo:
                 secondPhoto.image = image
-            case .third:
+            case .optionThree:
                 thirdPhoto.image = image
-            case .fourth:
+            case .optionFour:
                 fourthPhoto.image = image
             case .none:
                 return

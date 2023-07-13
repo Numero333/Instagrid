@@ -10,7 +10,7 @@
 		74622F422A4DB6F0008E9963 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F402A4DB6F0008E9963 /* Delm-Medium.otf */; };
 		74622F432A4DB6F0008E9963 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */; };
 		7477280C2A5721220012B1A8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477280B2A5721220012B1A8 /* Layout.swift */; };
-		74BD97292A5EFD3E00C75B9E /* SelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD97282A5EFD3E00C75B9E /* SelectedButton.swift */; };
+		74BD97292A5EFD3E00C75B9E /* ButtonIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */; };
 		74F8C0752A377E40009FE595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0742A377E40009FE595 /* AppDelegate.swift */; };
 		74F8C0772A377E40009FE595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0762A377E40009FE595 /* SceneDelegate.swift */; };
 		74F8C0792A377E40009FE595 /* InstagridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0782A377E40009FE595 /* InstagridViewController.swift */; };
@@ -23,7 +23,7 @@
 		74622F402A4DB6F0008E9963 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		7477280B2A5721220012B1A8 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		74BD97282A5EFD3E00C75B9E /* SelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedButton.swift; sourceTree = "<group>"; };
+		74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIdentifier.swift; sourceTree = "<group>"; };
 		74F8C0712A377E40009FE595 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F8C0742A377E40009FE595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74F8C0762A377E40009FE595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		74BD972B2A5F12A200C75B9E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				74BD97282A5EFD3E00C75B9E /* SelectedButton.swift */,
+				74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */,
 				7477280B2A5721220012B1A8 /* Layout.swift */,
 			);
 			path = Common;
@@ -103,9 +103,9 @@
 				74F8C0742A377E40009FE595 /* AppDelegate.swift */,
 				74F8C0762A377E40009FE595 /* SceneDelegate.swift */,
 				74BD972D2A5F12E100C75B9E /* Controller */,
-				74BD972C2A5F12AC00C75B9E /* Ressources */,
 				74BD972B2A5F12A200C75B9E /* Common */,
 				74BD972A2A5F129A00C75B9E /* Presentation */,
+				74BD972C2A5F12AC00C75B9E /* Ressources */,
 				74F8C0822A377E42009FE595 /* Info.plist */,
 			);
 			path = Instagrid;
@@ -187,7 +187,7 @@
 				74F8C0792A377E40009FE595 /* InstagridViewController.swift in Sources */,
 				7477280C2A5721220012B1A8 /* Layout.swift in Sources */,
 				74F8C0752A377E40009FE595 /* AppDelegate.swift in Sources */,
-				74BD97292A5EFD3E00C75B9E /* SelectedButton.swift in Sources */,
+				74BD97292A5EFD3E00C75B9E /* ButtonIdentifier.swift in Sources */,
 				74F8C0772A377E40009FE595 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
