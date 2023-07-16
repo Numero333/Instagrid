@@ -11,10 +11,10 @@ import SwiftUI
 final class InstagridViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // MARK: Property
-    @IBOutlet weak var firstPhoto: UIImageView!
-    @IBOutlet weak var secondPhoto: UIImageView!
-    @IBOutlet weak var thirdPhoto: UIImageView!
-    @IBOutlet weak var fourthPhoto: UIImageView!
+    @IBOutlet weak private var firstPhoto: UIImageView!
+    @IBOutlet weak private var secondPhoto: UIImageView!
+    @IBOutlet weak private var thirdPhoto: UIImageView!
+    @IBOutlet weak private var fourthPhoto: UIImageView!
     
     @IBOutlet private var firstSelectedIcon: UIImageView!
     @IBOutlet private var secondSelectedIcon: UIImageView!
@@ -28,16 +28,16 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet private var thirdLayout: UIButton!
     
     @IBOutlet private weak var photosMontageView: UIView!
-    @IBOutlet private var gestureRecognizer: UIPanGestureRecognizer!
     
-    // MARK: - Override
     private var selectedPhoto: UIImage?
     private var selectedButton: ButtonIdentifier?
     
+    // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
         displayFirstLayout()
-        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture))
+        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleShareGesture))
+        gestureRecognizer.direction = .up
         view.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -114,14 +114,18 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         imageView.image = selectedPhoto
     }
     
-    @objc private func handleGesture() {
-        
-        let loc = gestureRecognizer.translation(in: self.view)
-        let size = abs(loc.y)
-        
-        if size > 100 {
-            print("reconnu")
+    @objc private func handleShareGesture() {
+        let capturedPhotoMontage = captureMontageViewAsImage()
+        let activity = UIActivityViewController(activityItems: [capturedPhotoMontage], applicationActivities: nil)
+        present(activity, animated: true)
+    }
+    
+    private func captureMontageViewAsImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: photosMontageView.bounds.size)
+        let image = renderer.image { ctx in
+            photosMontageView.drawHierarchy(in: photosMontageView.bounds, afterScreenUpdates: true)
         }
+        return image
     }
     
     // MARK: - UIImagePickerControllerDelegate
