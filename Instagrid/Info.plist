@@ -5,7 +5,12 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Autorisez vous l&apos;accès a votre librairie de photos ?</string>
+	<string>Autorisez-vous l&apos;accès à votre librairie de photos ?
+Autorisez-vous l&apos;accès à votre librairie de photos ?
+Autorisez-vous l&apos;accès à votre librairie de photos ?
+Autorisez-vous l&apos;accès à votre librairie de photos ?
+Autorisez-vous l&apos;accès à votre librairie de photos ?
+Autorisez-vous l&apos;accès à votre librairie de photos ?</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Delm-Medium.otf</string>

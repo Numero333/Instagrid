@@ -8,10 +8,8 @@
 import Foundation
 
 enum ButtonIdentifier {
-    
     case optionOne
     case optionTwo
     case optionThree
     case optionFour
-    
 }
