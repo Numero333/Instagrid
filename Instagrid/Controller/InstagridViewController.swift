@@ -28,7 +28,7 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet private var thirdLayout: UIButton!
     
     @IBOutlet private weak var photosMontageView: UIView!
-    @IBOutlet private var gestureRecognizer: UIPanGestureRecognizer!
+    @IBOutlet var gestureRecognizer: UISwipeGestureRecognizer!
     
     // MARK: - Override
     private var selectedPhoto: UIImage?
@@ -37,7 +37,8 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         displayFirstLayout()
-        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture))
+        gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        gestureRecognizer.direction = .up
         view.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -116,12 +117,10 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
     
     @objc private func handleGesture() {
         
-        let loc = gestureRecognizer.translation(in: self.view)
-        let size = abs(loc.y)
+        let activity = UIActivityViewController(activityItems: [photosMontageView as Any], applicationActivities: nil)
         
-        if size > 100 {
-            print("reconnu")
-        }
+        print("reconnu")
+        present(activity, animated: true)
     }
     
     // MARK: - UIImagePickerControllerDelegate
