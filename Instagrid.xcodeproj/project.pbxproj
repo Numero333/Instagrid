@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		74622F422A4DB6F0008E9963 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F402A4DB6F0008E9963 /* Delm-Medium.otf */; };
 		74622F432A4DB6F0008E9963 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */; };
-		7477280C2A5721220012B1A8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477280B2A5721220012B1A8 /* Layout.swift */; };
-		74BD97292A5EFD3E00C75B9E /* ButtonIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */; };
+		7477280C2A5721220012B1A8 /* MontageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477280B2A5721220012B1A8 /* MontageLayout.swift */; };
 		74F8C0752A377E40009FE595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0742A377E40009FE595 /* AppDelegate.swift */; };
 		74F8C0772A377E40009FE595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0762A377E40009FE595 /* SceneDelegate.swift */; };
 		74F8C0792A377E40009FE595 /* InstagridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F8C0782A377E40009FE595 /* InstagridViewController.swift */; };
@@ -22,8 +21,7 @@
 /* Begin PBXFileReference section */
 		74622F402A4DB6F0008E9963 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		7477280B2A5721220012B1A8 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIdentifier.swift; sourceTree = "<group>"; };
+		7477280B2A5721220012B1A8 /* MontageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontageLayout.swift; sourceTree = "<group>"; };
 		74F8C0712A377E40009FE595 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F8C0742A377E40009FE595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74F8C0762A377E40009FE595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,32 +43,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		74BD972A2A5F129A00C75B9E /* Presentation */ = {
+		745BCB492A69B0BD00E6DB6D /* ApplicationLifeCycle */ = {
+			isa = PBXGroup;
+			children = (
+				74F8C0742A377E40009FE595 /* AppDelegate.swift */,
+				74F8C0762A377E40009FE595 /* SceneDelegate.swift */,
+			);
+			path = ApplicationLifeCycle;
+			sourceTree = "<group>";
+		};
+		74BD972A2A5F129A00C75B9E /* View */ = {
 			isa = PBXGroup;
 			children = (
 				74F8C07A2A377E40009FE595 /* Main.storyboard */,
 				74F8C07F2A377E42009FE595 /* LaunchScreen.storyboard */,
 			);
-			path = Presentation;
+			path = View;
 			sourceTree = "<group>";
 		};
 		74BD972B2A5F12A200C75B9E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				74BD97282A5EFD3E00C75B9E /* ButtonIdentifier.swift */,
-				7477280B2A5721220012B1A8 /* Layout.swift */,
+				7477280B2A5721220012B1A8 /* MontageLayout.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		74BD972C2A5F12AC00C75B9E /* Ressources */ = {
+		74BD972C2A5F12AC00C75B9E /* Ressource */ = {
 			isa = PBXGroup;
 			children = (
+				74F8C0822A377E42009FE595 /* Info.plist */,
 				74F8C07D2A377E42009FE595 /* Assets.xcassets */,
 				74622F402A4DB6F0008E9963 /* Delm-Medium.otf */,
 				74622F412A4DB6F0008E9963 /* ThirstySoftRegular.otf */,
 			);
-			path = Ressources;
+			path = Ressource;
 			sourceTree = "<group>";
 		};
 		74BD972D2A5F12E100C75B9E /* Controller */ = {
@@ -100,13 +107,11 @@
 		74F8C0732A377E40009FE595 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				74F8C0742A377E40009FE595 /* AppDelegate.swift */,
-				74F8C0762A377E40009FE595 /* SceneDelegate.swift */,
+				745BCB492A69B0BD00E6DB6D /* ApplicationLifeCycle */,
 				74BD972D2A5F12E100C75B9E /* Controller */,
 				74BD972B2A5F12A200C75B9E /* Common */,
-				74BD972A2A5F129A00C75B9E /* Presentation */,
-				74BD972C2A5F12AC00C75B9E /* Ressources */,
-				74F8C0822A377E42009FE595 /* Info.plist */,
+				74BD972A2A5F129A00C75B9E /* View */,
+				74BD972C2A5F12AC00C75B9E /* Ressource */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
@@ -185,9 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				74F8C0792A377E40009FE595 /* InstagridViewController.swift in Sources */,
-				7477280C2A5721220012B1A8 /* Layout.swift in Sources */,
+				7477280C2A5721220012B1A8 /* MontageLayout.swift in Sources */,
 				74F8C0752A377E40009FE595 /* AppDelegate.swift in Sources */,
-				74BD97292A5EFD3E00C75B9E /* ButtonIdentifier.swift in Sources */,
 				74F8C0772A377E40009FE595 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2N573HT98J;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = Instagrid/Ressource/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin de votre permission pour accéder à votre bibliothèque de photos afin de vous permettre de choisir des images à partager dans notre application.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -367,7 +371,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2N573HT98J;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = Instagrid/Ressource/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nous avons besoin de votre permission pour accéder à votre bibliothèque de photos afin de vous permettre de choisir des images à partager dans notre application.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

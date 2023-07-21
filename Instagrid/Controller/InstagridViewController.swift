@@ -6,15 +6,14 @@
 //
 
 import UIKit
-import SwiftUI
 
 final class InstagridViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // MARK: Property
-    @IBOutlet weak private var firstPhoto: UIImageView!
-    @IBOutlet weak private var secondPhoto: UIImageView!
-    @IBOutlet weak private var thirdPhoto: UIImageView!
-    @IBOutlet weak private var fourthPhoto: UIImageView!
+    @IBOutlet private var firstPhoto: UIImageView!
+    @IBOutlet private var secondPhoto: UIImageView!
+    @IBOutlet private var thirdPhoto: UIImageView!
+    @IBOutlet private var fourthPhoto: UIImageView!
     
     @IBOutlet private var firstSelectedIcon: UIImageView!
     @IBOutlet private var secondSelectedIcon: UIImageView!
@@ -29,61 +28,80 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
     
     @IBOutlet private weak var photosMontageView: UIView!
     
-    private var selectedPhoto: UIImage?
-    private var selectedButton: ButtonIdentifier?
+    private var selectedImageView: UIImageView?
+    private let swipeGesture = UISwipeGestureRecognizer()
     
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayFirstLayout()
-        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleShareGesture))
-        
-        // Orientation for swipe left
-        gestureRecognizer.direction = .up
-
-        view.addGestureRecognizer(gestureRecognizer)
+        self.displayFirstLayout()
+        self.setupGesture()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        switch UIDevice.current.orientation {
+        case .portrait, .faceUp, .faceDown, .portraitUpsideDown: self.swipeGesture.direction = .up
+        case .landscapeLeft, .landscapeRight: self.swipeGesture.direction = .left
+        case .unknown: break
+        @unknown default: break
+        }
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.selectedImageView?.image = nil
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.selectedImageView?.image = image
+        }
+        self.selectedImageView = nil
+        dismiss(animated: true)
     }
     
     // MARK: - Action
     @IBAction private func firstPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .optionOne
+        self.selectedImageView = self.firstPhoto
         showImagePicker()
-        assignPhoto(for: firstPhoto)
     }
     
     @IBAction private func secondPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .optionTwo
+        self.selectedImageView = self.secondPhoto
         showImagePicker()
-        assignPhoto(for: secondPhoto)
     }
     
     @IBAction private func thirdPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .optionThree
+        self.selectedImageView = self.thirdPhoto
         showImagePicker()
-        assignPhoto(for: thirdPhoto)
     }
     
     @IBAction private func fourthPhotoButtonTapped(_ sender: UIButton) {
-        selectedButton = .optionFour
+        self.selectedImageView = self.fourthPhoto
         showImagePicker()
-        assignPhoto(for: fourthPhoto)
     }
     
     @IBAction private func displayFirstLayout() {
-        updateLayout(for: .first)
+        updateMontageLayout(for: .first)
     }
     
     @IBAction private func displaySecondLayout() {
-        updateLayout(for: .second)
+        updateMontageLayout(for: .second)
     }
     
     @IBAction private func displayThirdLayout() {
-        updateLayout(for: .third)
+        updateMontageLayout(for: .third)
     }
     
     // MARK: - Private
-    private func updateLayout(for layout: Layout) {
-        
+    private func setupGesture() {
+        self.swipeGesture.addTarget(self, action: #selector(self.handleShareGesture))
+        self.view.addGestureRecognizer(self.swipeGesture)
+    }
+    
+    private func updateMontageLayout(for montageLayout: MontageLayout) {
         firstSelectedIcon.isHidden = true
         secondSelectedIcon.isHidden = true
         thirdSelectedIcon.isHidden = true
@@ -91,16 +109,13 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         topLayout.isHidden = false
         bottomLayout.isHidden = false
         
-        switch layout {
-            
+        switch montageLayout {
         case .first:
             topLayout.isHidden = true
             firstSelectedIcon.isHidden = false
-            
         case .second:
             bottomLayout.isHidden = true
             secondSelectedIcon.isHidden = false
-            
         case .third:
             thirdSelectedIcon.isHidden = false
         }
@@ -113,16 +128,6 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         present(imagePicker, animated: true)
     }
     
-    private func assignPhoto(for imageView: UIImageView) {
-        imageView.image = selectedPhoto
-    }
-    
-    @objc private func handleShareGesture() {
-        let capturedPhotoMontage = captureMontageViewAsImage()
-        let activity = UIActivityViewController(activityItems: [capturedPhotoMontage], applicationActivities: nil)
-        present(activity, animated: true)
-    }
-    
     private func captureMontageViewAsImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: photosMontageView.bounds.size)
         let image = renderer.image { ctx in
@@ -131,27 +136,10 @@ final class InstagridViewController: UIViewController, UIImagePickerControllerDe
         return image
     }
     
-    // MARK: - UIImagePickerControllerDelegate
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            
-            switch selectedButton {
-            case .optionOne:
-                firstPhoto.image = image
-            case .optionTwo:
-                secondPhoto.image = image
-            case .optionThree:
-                thirdPhoto.image = image
-            case .optionFour:
-                fourthPhoto.image = image
-            case .none:
-                return
-            }
-        }
-        dismiss(animated: true)
+    // MARK: - Selector
+    @objc private func handleShareGesture() {
+        let capturedPhotoMontage = captureMontageViewAsImage()
+        let activity = UIActivityViewController(activityItems: [capturedPhotoMontage], applicationActivities: nil)
+        present(activity, animated: true)
     }
 }

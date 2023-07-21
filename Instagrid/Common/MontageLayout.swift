@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Layout {
+enum MontageLayout {
     case first
     case second
     case third
